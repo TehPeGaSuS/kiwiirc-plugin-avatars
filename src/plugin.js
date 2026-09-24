@@ -158,7 +158,9 @@ kiwi.plugin('avatars', () => {
         const seed = (user.account || user.nick).toLowerCase();
         const options = {
             seed,
-            scale: 90,
+            // DiceBear v10 changed `scale` from a 0-200 percentage to a
+            // 0-10 multiplier (1 = 100%), so 90% is now 0.9, not 90.
+            scale: 0.9,
             backgroundColor: [],
         };
 
