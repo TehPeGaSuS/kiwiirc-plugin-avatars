@@ -2,7 +2,7 @@ const fs = require('fs');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { rimrafSync } = require('rimraf');
 
-const dicebearCollection = import('@dicebear/collection');
+const dicebearStylesPkg = require('@dicebear/styles/package.json');
 
 const utils = require('./build/utils');
 
@@ -37,8 +37,9 @@ module.exports = async (env, argv) => {
 };
 
 async function GenerateStyles() {
-    const styles = Object.keys(await dicebearCollection)
-        .map((s) => s.replace(/[A-Z]/g, (n) => '-' + n.toLowerCase()))
+    const styles = Object.keys(dicebearStylesPkg.exports)
+        .filter((s) => s.endsWith('.json'))
+        .map((s) => s.slice(2, -5))
         .filter((s) => s !== 'initials');
 
     const entry = {

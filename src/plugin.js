@@ -1,14 +1,14 @@
 /* global kiwi:true */
 
-import { createAvatar } from '@dicebear/core';
+import { Avatar, Style } from '@dicebear/core';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import * as initials from '@dicebear/initials';
+import initials from '@dicebear/styles/initials.json';
 
 import * as config from './config.js';
 
 const includedStyles = {
-    initials: { module: initials, options: {} },
+    initials: { module: new Style(initials), options: {} },
 };
 
 kiwi.plugin('avatars', () => {
@@ -33,7 +33,7 @@ kiwi.plugin('avatars', () => {
             }
 
             plugin.styles[name] = {
-                module,
+                module: new Style(module),
                 options,
             };
         },
@@ -167,7 +167,7 @@ kiwi.plugin('avatars', () => {
             Object.assign(options, style.options);
         }
 
-        const newAvatar = createAvatar(style.module, options).toDataUri();
+        const newAvatar = new Avatar(style.module, options).toDataUri();
 
         if (!shouldSetAvatar(user.avatar, force)) {
             return;

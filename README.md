@@ -2,7 +2,9 @@
 
 This plugin add avatars to all users, they are locally generated to reduce network calls.
 
-It is powered by [DiceBear](https://dicebear.com/)
+It is powered by [DiceBear](https://dicebear.com/) v10, so it includes all 61 DiceBear styles (including newer ones such as `squircles` and `toon-head`).
+
+> This is a fork of [ItsOnlyBinary/kiwiirc-plugin-avatars](https://github.com/ItsOnlyBinary/kiwiirc-plugin-avatars), upgraded from DiceBear v9 to v10 (`@dicebear/collection` + per-style packages were replaced upstream by a single `@dicebear/styles` package, and `createAvatar()` was replaced by the `Style`/`Avatar` classes). Usage and configuration are unchanged from upstream.
 
 ---
 
@@ -63,7 +65,7 @@ To set the default style add the following json to your `config.json`
 },
 ```
 
-It is possible to specify which styles can be autoloaded, or tweak the style options by setting `"styles"` array with the contents from [config-styles.json](https://github.com/ItsOnlyBinary/kiwiirc-plugin-avatars/blob/master/src/config-styles.json) and editing the contents.
+It is possible to specify which styles can be autoloaded, or tweak the style options by setting `"styles"` array with the contents from [config-styles.json](https://github.com/TehPeGaSuS/kiwiirc-plugin-avatars/blob/master/src/config-styles.json) and editing the contents.
 
 For the different options that can be specified in `stylesOptions` see here: [DiceBear/styles](https://dicebear.com/styles)
 

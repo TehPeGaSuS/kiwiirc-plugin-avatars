@@ -13,8 +13,8 @@
         "lint:style": "stylelint --allow-empty-input \"./src/**/*.{vue,html,css,less,scss,sass}\""
     },
     "dependencies": {
-        "@dicebear/collection": "^9.2.2",
-        "@dicebear/core": "^9.2.2",
+        "@dicebear/core": "^10.6.0",
+        "@dicebear/styles": "^10.6.0",
         "vue": "^2.7.16"
     },
     "devDependencies": {
