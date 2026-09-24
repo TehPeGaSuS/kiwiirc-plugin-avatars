@@ -1,8 +1,14 @@
 const fs = require('fs');
+const path = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { rimrafSync } = require('rimraf');
 
-const dicebearStylesPkg = require('@dicebear/styles/package.json');
+// '@dicebear/styles' does not list './package.json' in its "exports" map, so
+// require('@dicebear/styles/package.json') is blocked by Node's exports
+// enforcement. Resolve an actually-exported subpath instead and read the
+// package.json next to it directly via fs, which isn't subject to "exports".
+const dicebearStylesDir = path.dirname(path.dirname(require.resolve('@dicebear/styles/initials.json')));
+const dicebearStylesPkg = JSON.parse(fs.readFileSync(path.join(dicebearStylesDir, 'package.json'), 'utf-8'));
 
 const utils = require('./build/utils');
 
